@@ -1,6 +1,7 @@
 import React from 'react'
 // const myWebsocket = new WebSocket("wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self")
 const myWebsocket = new WebSocket("wss://socketsbay.com/wss/v2/2/demo/")
+// https://socketsbay.com/test-websockets
 // const myWebsocket = new WebSocket("wss://chatting-with-group.herokuapp.com/socket.io/?EIO=4&transport=websocket&sid=-lUs5SmsiYSJJF-wAAAS")
 
 function Realtime() {
