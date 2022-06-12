@@ -14,9 +14,11 @@ function Home() {
     }, [searchQuery])
     return (
         <div>
-            <p className='title'>Bentley POCs</p>
             <div className='container'>
                 <div className="left-panel">
+                    <NavLink to={"/poc/react-testing-jest"}>
+                        React Testing (Jest)
+                    </NavLink>
                     <NavLink to={"/poc/react-testing-puppeteer"}>
                         React Testing (Puppeteer)
                     </NavLink>

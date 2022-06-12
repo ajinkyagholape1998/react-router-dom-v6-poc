@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
+import JestTesting from '../poc/JestTesting/jestTesting';
 import Puppeteer from '../poc/puppeteer/puppeteer';
 import Realtime from '../poc/realtime/realtime';
 import Home from '../screens/home/home';
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} >
             <Route path='/poc/react-testing-puppeteer' element={<Puppeteer />} />
+            <Route path='/poc/react-testing-jest' element={<JestTesting />} />
             <Route path='/poc/react-realtime' element={<Realtime />} />
           </Route>
           <Route path='/tab1' element={<h3>Tab 1</h3>} />

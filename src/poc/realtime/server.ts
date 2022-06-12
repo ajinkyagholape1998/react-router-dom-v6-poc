@@ -1,7 +1,7 @@
 // Import express, expressWs, and http
-import * as express from 'express';
-import * as expressWs from 'express-ws';
-import http from 'http'
+// import * as express from 'express';
+// import * as expressWs from 'express-ws';
+// import http from 'http'
 
 // Our port
 // let port = 4000;
@@ -29,3 +29,31 @@ import http from 'http'
 //         // Start listening for messages
 //     });
 // });
+
+import WebSocket from "ws";
+
+const wss = new WebSocket.Server({
+    noServer: true,
+    path: "/websockets",
+    port: 8088
+});
+
+// Creating connection using websocket
+wss.on("connection", ws => {
+    console.log("new client connected");
+    // sending message
+    ws.on("message", data => {
+        console.log(`Client has sent us: ${data}`)
+    });
+    // handling what to do when clients disconnects from server
+    ws.on("close", () => {
+        console.log("the client has connected");
+    });
+    // handling client connection error
+    ws.onerror = function () {
+        console.log("Some Error occurred")
+    }
+});
+
+
+
