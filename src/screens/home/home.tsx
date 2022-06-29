@@ -25,6 +25,12 @@ function Home() {
                     <NavLink to={"/poc/react-realtime"}>
                         React Realtime
                     </NavLink>
+                    <NavLink to={"/poc/table-grid"}>
+                        Table Grid
+                    </NavLink>
+                    <NavLink to={"/poc/redux"}>
+                        Redux
+                    </NavLink>
                 </div>
                 <div className='content'>
                     <Outlet />

@@ -1,0 +1,27 @@
+.table-grid-root {
+    /* background-color: aqua; */
+    overflow-y: auto;
+    height: 80vh;
+}
+
+.table-grid-root table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.table-grid-root th {
+    text-align: center;
+    padding: 8px;
+}
+
+.table-grid-root td,
+th {
+    text-align: center;
+    padding: 8px;
+}
+
+.table-grid-root tr:nth-child(even) {
+    background-color: #dddddd;
+}
