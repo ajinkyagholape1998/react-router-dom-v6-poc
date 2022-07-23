@@ -10,18 +10,15 @@ function ReduxDemo() {
             payload: event.target.value
         })
     }
-    React.useEffect(() => {
-        console.log("state => ", state)
-    }, [state])
+
     return (
         <div>
-            <p>ReduxDemo</p>
+            <p>Redux Demo</p>
             <input
                 autoFocus={true}
                 type={"text"}
                 onChange={handleOnChange}
                 value={state.name} />
-            <p>name: {state?.name}</p>
         </div>
     )
 }

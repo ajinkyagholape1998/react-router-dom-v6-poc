@@ -29,7 +29,7 @@ code {
   /* background-color: antiquewhite; */
   width: 18%;
   padding: 5px;
-  height: 100vh;
+  height: calc(100vh - 10px);
   display: flex;
   flex-direction: column;
   border-right: solid 1px black;
@@ -39,7 +39,7 @@ code {
   /* background-color: aqua; */
   width: 80%;
   padding: 5px;
-  height: 100vh;
+  height: calc(100vh - 10px);
 }
 
 .login-form-container {

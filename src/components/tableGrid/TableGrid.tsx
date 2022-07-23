@@ -3,45 +3,55 @@ import React from 'react'
 import "./style.css"
 
 const getData = async (pageNumber: number, pageSize = 50) => {
-    const data = await axios.get(`https://randomuser.me/api/?page=${pageNumber}&results=${pageSize}`)
+    const body = {
+        "pageNumber": 1,
+        "pageSize": 5
+    }
+    const data = await axios.get(`http://161.97.72.45:5056/api/Country`, {
+        data: body,
+        headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6ImFkbWluIiwiVXNlckVtYWlsIjoiYWRtaW5AZW1haWwuY29tIiwiVXNlcklkIjoiNmVmODhhOWMtOGU2ZC00ODc5LWI0NWQtYmYxNGQ5ZjYyYjMyIiwiVXNlclJvbGUiOiJSb2xlIiwiZXhwIjoxNjU4NTA1Mzk3LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDM3OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0Mzc5In0.JWT5X67_TKZJ9QxeN9smb6ho5GnzCcFf0O9T9rrUc_Y"
+        }
+    })
     return data;
 }
 
 function TableGrid() {
     const [pageNumber, setPageNumber] = React.useState(1);
-    const [data, setData] = React.useState<any>(null);
+    const [pageSize, setPageSize] = React.useState(1);
+    const [data, setData] = React.useState<any>([]);
     React.useEffect(() => {
         getData(pageNumber).then((newData: any) => {
-            setData([data, ...newData.data.results])
+            setData([...newData.data])
         });
     }, [pageNumber]);
-
-    window.onscroll = () => {
-        if (window.innerHeight + document.documentElement.scrollTop ===
-            document.documentElement.offsetHeight) {
-            setPageNumber((prev) => prev + 1)
-        }
-        // else {
-        //     alert("else")
-        // }
-    }
 
     return (
         <div className='table-grid-root'>
             <table>
                 <tr>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Email</th>
+                    {
+                        data?.length > 0 ? Object.entries(data[0]).map(([key]: any) => {
+                            if (key === "id") return
+                            return (
+                                <th style={{ textTransform: "capitalize" }}>{key.replace(/([a-z0-9])([A-Z])/g, '$1 $2')}</th>
+                            )
+                        })
+                            : <span>loading...</span>
+                    }
                 </tr>
                 {
                     data?.map((item: any, itemIdx: number) => {
-                        console.log(item)
                         return (
-                            <tr>
-                                <td>{item?.name?.first}</td>
-                                <td>{item?.phone}</td>
-                                <td>{item?.email}</td>
+                            <tr key={`${item.id}-${itemIdx}`}>
+                                {
+                                    Object.entries(item).map(([key, value]: any, colIdx: number) => {
+                                        if (key === "id") return
+                                        return (
+                                            <td key={`${item.id}-${colIdx}`}>{value ? value : "-"}</td>
+                                        )
+                                    })
+                                }
                             </tr>
                         )
                     })
